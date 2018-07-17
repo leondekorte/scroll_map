@@ -1,0 +1,28 @@
+.map {
+  background-color: #d2cbc5;
+}
+
+.graticule {
+  fill: none;
+  stroke: #777;
+  stroke-opacity: .5;
+  stroke-width: .5px;
+}
+
+.land {
+  fill: #f4f1ed;
+}
+
+.boundary {
+  fill: none;
+  stroke: #c0b8ae;
+  stroke-width: .5px;
+}
+
+svg .path {
+  fill: none;
+  stroke-opacity: .8;
+  stroke-dasharray: 3,2;
+  stroke: #f44;
+}
+

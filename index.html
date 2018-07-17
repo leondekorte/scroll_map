@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<script src="d3.min.js"></script>
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+
+	<script type="text/javascript">
+		
+		
+		var width = 600,
+		    height = 300;
+
+		var projection = d3.geoMercator()
+		    .scale(6*(width + 1) / 2 / Math.PI)
+		    .translate([width / 2, height / 2])
+		    .rotate([60, 20, 0])
+		    .precision(.1);
+
+		var path = d3.geoPath()
+		    .projection(projection);
+
+		var graticule = d3.geoGraticule();
+
+		var svg = d3.select("body").append("svg")
+		    .attr("width", width)
+		    .attr("height", height)
+		    .attr("class", "map");
+
+		svg.append("path")
+		    .datum(graticule)
+		    .attr("class", "graticule")
+		    .attr("d", path);
+		
+		d3.json("Barts_route.geojson", function(error, track) {
+			
+			d3.json("world-50m.json", function(error, world) {
+			    
+			    svg.insert("path", ".graticule")
+			      .datum(topojson.feature(world, world.objects.land))
+			      .attr("class", "land")
+			      .attr("d", path);
+
+			    svg.insert("path", ".graticule")
+			      .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
+			      .attr("class", "boundary")
+			      .attr("d", path);
+			    
+			    console.log(d);
+			    var pathLine = d3.line()
+			        // .curve("cardinal")
+			        .x(function(d) { return projection([d.lon, d.lat])[0]; })
+			        .y(function(d) { return projection([d.lon, d.lat])[1]; });
+
+			    var haiyanPath = svg.append("path")
+				    .attr("d",pathLine(track))
+				    .attr("class","path");
+
+			});
+		});
+
+
+		d3.select(self.frameElement).style("height", height + "px");
+
+	</script>
+
+
+
+
+
+
+</body>
+</html>
