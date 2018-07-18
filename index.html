@@ -9,12 +9,12 @@
 		
 		
 		var width = 600,
-		    height = 300;
+		    height = 200;
 
 		var projection = d3.geoMercator()
-		    .scale(6*(width + 1) / 2 / Math.PI)
-		    .translate([width / 2, height / 2])
-		    .rotate([60, 20, 0])
+		    .scale(1500)
+		    .translate([width / 2, height / 4])
+		    .rotate([60, 23, 0])
 		    .precision(.1);
 
 		var path = d3.geoPath()
@@ -32,7 +32,8 @@
 		    .attr("class", "graticule")
 		    .attr("d", path);
 		
-		d3.json("Barts_route.geojson", function(error, track) {
+		d3.csv("route.csv", function(error, track) {
+			console.log(track);
 			
 			d3.json("world-50m.json", function(error, world) {
 			    
@@ -46,15 +47,14 @@
 			      .attr("class", "boundary")
 			      .attr("d", path);
 			    
-			    console.log(d);
-			    var pathLine = d3.line()
-			        // .curve("cardinal")
-			        .x(function(d) { return projection([d.lon, d.lat])[0]; })
-			        .y(function(d) { return projection([d.lon, d.lat])[1]; });
 
-			    var haiyanPath = svg.append("path")
-				    .attr("d",pathLine(track))
-				    .attr("class","path");
+			    var line_generator = d3.line()
+				    .x(function(track) { return projection([track.lat,track.lon])[0] ; })
+				    .y(function(track) { return projection([track.lat,track.lon])[1]; });
+
+			    var route_zuid_amerika = svg.append("path")
+				    .attr("d",line_generator(track))
+				    .attr("class","route");
 
 			});
 		});
