@@ -4,70 +4,29 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<script src="d3.min.js"></script>
 	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<script src="visualization.js"></script>
 
-	<script type="text/javascript">
-		
-		
-		var width = 600,
-		    height = 200;
+	<div id="container">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vulputate, ex vel facilisis eleifend, lacus neque egestas metus, at condimentum sapien nibh cursus augue. Integer condimentum convallis egestas. Duis neque arcu, interdum eget neque vel, scelerisque tempor lorem. Nam in lacinia odio, non blandit nibh. Curabitur cursus lorem sit amet quam congue posuere. Nam mattis libero pharetra, facilisis tellus sit amet, tincidunt nunc. Duis sed lacus euismod, porta velit eget, pharetra dolor.</p>
 
-		var projection = d3.geoMercator()
-		    .scale(1500)
-		    .translate([width / 2, height / 4])
-		    .rotate([60, 23, 0])
-		    .precision(.1);
+		<p>Aenean euismod feugiat turpis sit amet consequat. Integer id est viverra, vehicula sapien egestas, ultrices dolor. Fusce eu bibendum nisl, non mollis felis. Nam quis tortor ultrices, accumsan felis et, auctor ligula. Morbi euismod, nulla a commodo facilisis, libero turpis interdum dolor, et ultrices felis felis ac enim. Cras commodo orci ut ligula suscipit posuere. Phasellus hendrerit tellus magna, in faucibus quam consequat ac. Quisque aliquam augue eu diam placerat, a faucibus elit bibendum. Mauris hendrerit varius elit. Ut mattis placerat libero. Vestibulum tincidunt tristique lectus vel consectetur.</p>
 
-		var path = d3.geoPath()
-		    .projection(projection);
+		<p>Donec vulputate finibus molestie. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent lobortis mollis nulla, sed pharetra nisl maximus quis. Cras non ligula lacus. Pellentesque et urna eget libero euismod vestibulum vulputate sit amet libero. Praesent sollicitudin vestibulum velit non congue. Donec nec neque eu mauris scelerisque sollicitudin ac vitae magna. Suspendisse ac tincidunt mi, sed pulvinar risus. Vestibulum fermentum luctus dui, vitae convallis est dictum non. Vivamus blandit varius aliquet. Aenean convallis enim non convallis interdum. Nunc nec eros quis enim egestas volutpat.</p>
 
-		var graticule = d3.geoGraticule();
+		<p>Aenean non mattis dolor, gravida interdum lorem. Nulla placerat, metus fringilla faucibus pellentesque, magna mi placerat nisl, id porttitor erat enim in elit. Integer posuere ullamcorper eros at condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas eros felis, sagittis in elementum eget, condimentum quis neque. Fusce sit amet est in augue faucibus sodales nec quis sapien. Nam quis accumsan sem, quis lacinia enim. Aliquam erat volutpat. Nulla a tincidunt enim, nec pellentesque nisi. Phasellus hendrerit non lacus sit amet ornare.</p>
 
-		var svg = d3.select("body").append("svg")
-		    .attr("width", width)
-		    .attr("height", height)
-		    .attr("class", "map");
+		<p>Quisque ligula nibh, rhoncus non diam eget, auctor efficitur turpis. In luctus magna at nisl vestibulum, et elementum diam efficitur. Pellentesque vulputate vestibulum sollicitudin. Cras gravida orci eget quam tincidunt, id elementum ligula porta. Nunc a lectus non dui elementum tempus at at odio. Praesent velit est, interdum et finibus in, porttitor id quam. In hac habitasse platea dictumst. Curabitur quis nisl a neque varius pulvinar eget sed magna. In sed mi vitae dolor maximus mattis sed ac quam.</p>
 
-		svg.append("path")
-		    .datum(graticule)
-		    .attr("class", "graticule")
-		    .attr("d", path);
-		
-		d3.csv("route.csv", function(error, track) {
-			console.log(track);
-			
-			d3.json("world-50m.json", function(error, world) {
-			    
-			    svg.insert("path", ".graticule")
-			      .datum(topojson.feature(world, world.objects.land))
-			      .attr("class", "land")
-			      .attr("d", path);
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vulputate, ex vel facilisis eleifend, lacus neque egestas metus, at condimentum sapien nibh cursus augue. Integer condimentum convallis egestas. Duis neque arcu, interdum eget neque vel, scelerisque tempor lorem. Nam in lacinia odio, non blandit nibh. Curabitur cursus lorem sit amet quam congue posuere. Nam mattis libero pharetra, facilisis tellus sit amet, tincidunt nunc. Duis sed lacus euismod, porta velit eget, pharetra dolor.</p>
 
-			    svg.insert("path", ".graticule")
-			      .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
-			      .attr("class", "boundary")
-			      .attr("d", path);
-			    
+		<p>Aenean euismod feugiat turpis sit amet consequat. Integer id est viverra, vehicula sapien egestas, ultrices dolor. Fusce eu bibendum nisl, non mollis felis. Nam quis tortor ultrices, accumsan felis et, auctor ligula. Morbi euismod, nulla a commodo facilisis, libero turpis interdum dolor, et ultrices felis felis ac enim. Cras commodo orci ut ligula suscipit posuere. Phasellus hendrerit tellus magna, in faucibus quam consequat ac. Quisque aliquam augue eu diam placerat, a faucibus elit bibendum. Mauris hendrerit varius elit. Ut mattis placerat libero. Vestibulum tincidunt tristique lectus vel consectetur.</p>
 
-			    var line_generator = d3.line()
-				    .x(function(track) { return projection([track.lat,track.lon])[0] ; })
-				    .y(function(track) { return projection([track.lat,track.lon])[1]; });
+		<p>Donec vulputate finibus molestie. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent lobortis mollis nulla, sed pharetra nisl maximus quis. Cras non ligula lacus. Pellentesque et urna eget libero euismod vestibulum vulputate sit amet libero. Praesent sollicitudin vestibulum velit non congue. Donec nec neque eu mauris scelerisque sollicitudin ac vitae magna. Suspendisse ac tincidunt mi, sed pulvinar risus. Vestibulum fermentum luctus dui, vitae convallis est dictum non. Vivamus blandit varius aliquet. Aenean convallis enim non convallis interdum. Nunc nec eros quis enim egestas volutpat.</p>
 
-			    var route_zuid_amerika = svg.append("path")
-				    .attr("d",line_generator(track))
-				    .attr("class","route");
+		<p>Aenean non mattis dolor, gravida interdum lorem. Nulla placerat, metus fringilla faucibus pellentesque, magna mi placerat nisl, id porttitor erat enim in elit. Integer posuere ullamcorper eros at condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas eros felis, sagittis in elementum eget, condimentum quis neque. Fusce sit amet est in augue faucibus sodales nec quis sapien. Nam quis accumsan sem, quis lacinia enim. Aliquam erat volutpat. Nulla a tincidunt enim, nec pellentesque nisi. Phasellus hendrerit non lacus sit amet ornare.</p>
 
-			});
-		});
-
-
-		d3.select(self.frameElement).style("height", height + "px");
-
-	</script>
-
-
-
-
-
+		<p>Quisque ligula nibh, rhoncus non diam eget, auctor efficitur turpis. In luctus magna at nisl vestibulum, et elementum diam efficitur. Pellentesque vulputate vestibulum sollicitudin. Cras gravida orci eget quam tincidunt, id elementum ligula porta. Nunc a lectus non dui elementum tempus at at odio. Praesent velit est, interdum et finibus in, porttitor id quam. In hac habitasse platea dictumst. Curabitur quis nisl a neque varius pulvinar eget sed magna. In sed mi vitae dolor maximus mattis sed ac quam.</p>
+	</div>
 
 </body>
 </html>

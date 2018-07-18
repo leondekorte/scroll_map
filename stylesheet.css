@@ -1,5 +1,12 @@
-.map {
-  background-color: #d2cbc5;
+.boundary {
+  fill: none;
+  stroke: #c0b8ae;
+  stroke-width: .5px;
+}
+
+#container {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .graticule {
@@ -9,19 +16,23 @@
   stroke-width: .5px;
 }
 
-.land {
-  fill: #f4f1ed;
+.map {
+  background-color: #d2cbc5;
 }
 
-.boundary {
-  fill: none;
-  stroke: #c0b8ae;
-  stroke-width: .5px;
+.land {
+  fill: #f4f1ed;
 }
 
 .route {
   fill: none;
   /*stroke-dasharray: 3,2;*/
   stroke: #f44;
+  stroke-width: 2px;
 }
 
+.map {
+  position: fixed;
+  margin-bottom: 0;
+  /*stroke: white;*/
+}
