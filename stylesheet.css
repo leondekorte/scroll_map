@@ -18,6 +18,8 @@
 
 .map {
   background-color: #d2cbc5;
+  position: fixed;
+  bottom: 0;
 }
 
 .land {
@@ -31,8 +33,3 @@
   stroke-width: 2px;
 }
 
-.map {
-  position: fixed;
-  margin-bottom: 0;
-  /*stroke: white;*/
-}
